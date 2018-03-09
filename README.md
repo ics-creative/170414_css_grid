@@ -1,9 +1,8 @@
 # 事前準備
 
-Node.jsとYarnをインストールしておいてください。
+Node.jsをインストールしておいてください。
 
 - [Node\.js](https://nodejs.org/ja/)
-- [Yarn](https://yarnpkg.com/lang/en/)
 
 ## インストール
 
