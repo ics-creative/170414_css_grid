@@ -24,11 +24,11 @@
 // You can read more about the new JavaScript features here:
 // https://babeljs.io/docs/learn-es2015/
 
-import gulp from 'gulp';
-import del from 'del';
-import runSequence from 'run-sequence';
 import browserSync from 'browser-sync';
+import del from 'del';
+import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
+import runSequence from 'run-sequence';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -69,7 +69,10 @@ gulp.task('styles', () => {
       outputStyle: 'expanded',
       precision: 10
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe($.autoprefixer({
+      browsers: AUTOPREFIXER_BROWSERS,
+      grid: true
+    }))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate and minify styles
     .pipe($.size({title: 'styles'}))
@@ -81,7 +84,7 @@ gulp.task('styles', () => {
 // Scan your HTML for assets & optimize them
 gulp.task('html', () => {
   return gulp.src('app/**/*.html')
-    // Output files
+  // Output files
     .pipe($.if('*.html', $.size({title: 'html', showFiles: true})))
     .pipe(gulp.dest('dist'));
 });
