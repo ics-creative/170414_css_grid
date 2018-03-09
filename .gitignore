@@ -4,3 +4,4 @@ app.yaml
 .DS_Store
 Thumbs.db
 .idea
+/yarn.lock
